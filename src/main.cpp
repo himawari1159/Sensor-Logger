@@ -1,16 +1,24 @@
 #include <iostream>
+#include "Sensor.hpp"
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class TemperatureSensor : public Sensor {
+    public:
+        std::string getName() const override {
+            return "Temperature";
+        }
+
+        double read() const override {
+            return 25.0 + (std::rand() % 1000) / 50.0; //Random value ~25-45C
+        }
+};
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    std::srand(time(NULL));
+    TemperatureSensor tempSensor;
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+    for (int i = 0; i < 10; i++) {
+        std::cout << tempSensor.getName() << ": " << tempSensor.read() << "C\n";
     }
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }
