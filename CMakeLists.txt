@@ -14,4 +14,5 @@ include_directories(include)
 file(GLOB SOURCES "src/*.cpp")
 
 #Compile into an executable
-add_executable(SensorLogger ${SOURCES})
+add_executable(SensorLogger ${SOURCES}
+        include/TemperatureSensor.hpp)

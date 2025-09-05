@@ -1,23 +1,20 @@
+#include <chrono>
 #include <iostream>
-#include "Sensor.hpp"
+#include <thread>
 
-class TemperatureSensor : public Sensor {
-    public:
-        std::string getName() const override {
-            return "Temperature";
-        }
-
-        double read() const override {
-            return 25.0 + (std::rand() % 1000) / 50.0; //Random value ~25-45C
-        }
-};
+#include "TemperatureSensor.hpp"
+#include "Logger.hpp"
+#include <vector>
 
 int main() {
-    std::srand(time(NULL));
     TemperatureSensor tempSensor;
+    std::vector<Sensor*> sensors = {&tempSensor};
+
+    Logger logger(sensors, "../data/log.txt");
 
     for (int i = 0; i < 10; i++) {
-        std::cout << tempSensor.getName() << ": " << tempSensor.read() << "C\n";
+        logger.logData();
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
 
     return 0;
