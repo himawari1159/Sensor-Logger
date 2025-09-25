@@ -15,4 +15,5 @@ file(GLOB SOURCES "src/*.cpp")
 
 #Compile into an executable
 add_executable(SensorLogger ${SOURCES}
-        include/TemperatureSensor.hpp)
+        include/TemperatureSensor.hpp
+        include/LightSensor.hpp)

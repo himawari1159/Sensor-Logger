@@ -1,15 +1,16 @@
-#include <chrono>
-#include <iostream>
-#include <thread>
-
 #include "TemperatureSensor.hpp"
+#include "LightSensor.hpp"
 #include "Logger.hpp"
 #include <vector>
+#include <chrono>
+#include <thread>
+
 
 int main() {
     TemperatureSensor tempSensor;
-    std::vector<Sensor*> sensors = {&tempSensor};
+    LightSensor lightSensor;
 
+    std::vector<Sensor*> sensors = {&tempSensor, &lightSensor};
     Logger logger(sensors, "../data/log.txt");
 
     for (int i = 0; i < 10; i++) {
