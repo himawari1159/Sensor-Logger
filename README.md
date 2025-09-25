@@ -70,7 +70,7 @@ cmake --build .
 
 ---
 
-## 📌 Project Milestones
+## Project Milestones
 
 | Version | Status   | Notes                                                  |
 |---------|----------|--------------------------------------------------------|
